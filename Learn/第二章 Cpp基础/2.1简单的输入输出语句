@@ -17,3 +17,17 @@ void main()
 	cout << "我对C++很着迷!";
 	cout << endl;
 }
+
+注：第18行为输出换行符，为了简便也可以将17和18行连在一起写：
+cout << "我对C++很着迷！" <<endl;
+
+eg2-2
+#include<iostream>
+using namespace std;
+void main()
+{
+	cout << "*" << endl;
+	cout << "* * *" << endl;
+	cout << "* * * * * *" << endl;
+	cout << "* * * * * * * *" << endl;
+}
