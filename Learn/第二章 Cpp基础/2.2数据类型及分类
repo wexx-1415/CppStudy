@@ -1,0 +1,71 @@
+2.2.1-2.2.2 数据类型 基本数据类型
+（简单过一下，需要详细的查询即可）
+//布尔型
+cout << "布尔型占字节：" << sizeof(bool) << endl;
+ 
+//整型
+cout << "short型占字节：" << sizeof(short) << endl;
+cout << "short int型占字节：" << sizeof(short int) << endl;
+cout << "int型占字节：" << sizeof(int) << endl;
+cout << "long型占字节：" << sizeof(long) << endl;
+cout << "long int型占字节：" << sizeof(long int) << endl;
+cout << "long long型占字节：" << sizeof(long long) << endl;
+cout << "long long型占字节：" << sizeof(long long int) << endl;
+ 
+//浮点型
+cout << "float型占字节：" << sizeof(float) << endl;
+cout << "double型占字节：" << sizeof(double) << endl;
+cout << "long double型占字节：" << sizeof(long double) << endl;
+ 
+//字符型
+cout << "char型占字节：" << sizeof(char) << endl;
+cout << "wchar_t型占字节：" << sizeof(wchar_t) << endl;
+ 
+//无符号型
+cout << "unsigned型占字节：" << sizeof(unsigned) << endl;
+cout << "unsigned int型占字节：" << sizeof(unsigned int) << endl;
+该代码查找于CSDN
+
+数据通过变量存储在内存中，方便程序随时取用
+数据类型的作用：
+Ⅰ为数据在内存中分配合适的存储区域，同时确定数据范围
+Ⅱ规定数据所能进行的操作
+
+2.2.3 数据类型转换
+
+自动类型转换：
+对数据进行运算时一般要求两个运算操作数的类型一致，如果不一致，系统编译器会自动将这两个运算操作数转换成相同类型之后再进行运算
+自动类型转换是按从低到高的顺序原则进行的
+(bool char short) -> int -> long -> (float double)
+低—————————————————————————————————————————————>高（应该是从精确度越低走向精确度越高）
+eg：
+计算10+2.5时编译器先将10转换成双精度浮点型后再相加，结果是双精度浮点型12.5
+
+强制类型转换：
+eg：
+int a;
+double b = 3.14;
+a = (int)b;
+将双精度浮点型数据b强制类型转换后得到的数字赋值给整型数据a，得到的结果是a=3,b=3.14
+采用强制类型转换将高类型数据转换成低类型数据可能降低数据的精确度
+
+
+2.2.4 变量
+
+程序中的每一个数据都有一个名字，在内存中都占据一定的存储单元
+在程序运行过程中 数据值不能改变的量称为常量 能够改变的量称为变量
+变量在程序运行过程中可以进行赋值来改变原来的值
+C++中所有常量和变量在使用前都必须先声明数据的类型-------------------------“先声明，后使用”
+定义后的变量才能进行存储和读取其值的操作
+
+变量的定义
+数据类型关键字 变量名
+eg：
+int a,b;
+char ch1 = 'a', ch2 = 'A';
+int x = a + 4 * b;
+double d1,d2=0.0,d3=3.14159;
+（我还是无法理解为什么要隔一个空格）
+这些在C里面都学过了　应该没啥问题
+
+习惯上　常量用大写字母表示　变量用小写字母表示以区分开来
