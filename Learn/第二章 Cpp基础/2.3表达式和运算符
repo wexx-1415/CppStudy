@@ -182,8 +182,278 @@ x >> n 表示右移n位 相当于做x / 2^n的运算
 那么a = c ^ b
 即  a = (a ^ b) ^ b
 用同一个数b对数a进行二次异或运算的结果仍是数a
+！！！：通过按位异或运算，可以实现两个值的交换，而不必使用临时变量。
+    a=10100001
+    b=00000110
 
+    a=a^b； 　　//a=10100111
+
+    b=b^a； 　　//b=10100001
+
+    a=a^b； 　　//a=00000110
+
+
+eg2-11 一个异或运算的应用实例
+#include<iostream>
+using namespace std;
+void main()
+{
+	char a1 = 'b', a2 = 'o', a3 = 'o', a4 = 'k';//字符
+	char b1, b2, b3, b4;
+	char passwd = 'x';//密钥
+	a1 = (char)(a1 ^ passwd);
+	a2 = (char)(a2 ^ passwd);
+	a3 = (char)(a3 ^ passwd);
+	a3 = (char)(a3 ^ passwd);//异或运算加密
+	b1 = (char)(a1 ^ passwd);
+	b2 = (char)(a2 ^ passwd);
+	b3 = (char)(a3 ^ passwd);
+	b4 = (char)(a4 ^ passwd);//再一次异或运算解密
+	cout << "加密后的密文：" << a1 << a2 << a3 << a4 << endl;
+	cout << "解密后得到原文：" << b1 << b2 << b3 << b4 << endl;
+}
+
+上述程序的解析：
+首先打开阿斯特码表 将b o o k x代表的bin（二进制文件）查询出来
+b:01100010              o:01101111             k:01101011
+x:01111000              x:01111000             x:01111000 
+ :00011010               :00010111              :00010011        注意：异或：不同为1 相同为0
+  SUB                     ETB                    DC3
+Escape (溢出)    End of Transmit Block (传输块结束)   Device Control 3 (设备控制3)
+无法理解 而且我运行后的结果是错位的book和方框 书中的结果是→两个不知道什么的符号！！   （而且我在网上查了一下阿斯特码表 并没有中间两个符号的二进制文件）
 6.求反运算
+
+运算符号“~”是将运算对象的每一位都取反
+即如果原来的位是1则结果就为0，如果原来的位是0则结果为1
+
+如：
+~9的运算为： ~（0000000000001001）
+结果为：1111111111110110
+
+2.3.5 常用的标准函数
+
+C++中有两种函数
+ⅠC++系统提供的函数
+Ⅱ自定义函数
+
+由C++系统提供的函数称为标准函数（库函数）
+C++语言提供了丰富的标准函数　设计程序时可以直接调用它们
+（有时间的话我整理一下头文件的系统功能和函数原型再发到C++的repository里面 平时要用的互联网上冲浪一下即可）
+
+头文件cstdlib 
+int abs(int x)                   求整数绝对值的函数
+
+头文件cmath
+double sqrt(double x)            求x的算术平方根
+double log(double x)             求x的自然对数函数lnx
+double exp(double x)             求欧拉常数e^x
+double pow(double x,double y)    求x的y次方 x^y x、y为整数或实数
+double sin(double x)             求sinx
+double cos(double x)             求cosx
+double tan(double x)             求tanx
+
+头文件iostream
+sizeof(x)                        求数据类型或表达式x所占用内存的字节数
+
+
+eg2-12 已知三角形两边及夹角 求第三边
+假设已知a=3 b=4 α=Π/4 根据余弦定理公式求c
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+#define PI 3.14159
+void main()
+{
+	double a = 3, b = 4, c;
+	c = sqrt(a * a + b * b - 2 * a * b * cos(PI / 4));
+	cout << "c=" << c << endl;
+}
+
+运行结果：c=2.83362
+
+这里使用了cmath的头文件来使用sqrt和cos函数
+不知道角的大小怎么表达定义PI=3.14159再进行相关运算即可
+
+eg2-13 使用sizeof运算符计算字符类型再内存中所占用的字节数
+
+#include<iostream>
+using namespace std;
+void main()
+{
+	int s = sizeof(char);
+	cout << "char=" << s << endl;
+}
+
+运行结果：char=1
+
+要计算哪种类型数据在内存中所占用的字节数 
+使用sizeof函数进行如下表达即可
+（记住头文件为iostream!虽然平时都是这个头文件 早就习惯打它了zzz)
+#include<iostream>
+using namespace std;
+void main()
+{
+int x;
+x=sizeof(数据类型)；
+cout<<"数据类型="<<x<<endl;
+}
+
+
+2.4 程序控制语句
+（这里大部分都是抄书 平时一直都用到的定义 没啥好说的）（建议还是复习异或）
+
+2.4.1 语句
+
+语句组成了一个执行程序的基本单元 它类似于自然语言的句子
+一条语句由一个分号结束
+
+1.表达式语句
+如
+x=3;
+y=5;
+sum=x+y;
+一个表达式的最后加上一个分号就构成了一条语句
+！：分号是语句不可缺少的部分
+
+2.复合语句
+
+用{}把一些语句括起来构成复合语句
+有时也把复合语句称为语句块
+如
+{
+x=25+i;
+cout << "x=" << x << endl;
+}
+
+3.控制语句
+
+控制语句用于控制程序流程及执行的先后顺序
+C++语言的控制语句可分为三类：
+Ⅰ顺序控制语句
+Ⅱ选择控制语句
+Ⅲ循环控制语句
+
+2.4.2 顺序控制语句
+
+顺序控制语句是指计算机在执行这种结构的程序时，按从上到下的顺序依次执行程序中的每一条语句
+顺序控制是程序的最基本结构，包含有选择控制语句和循环控制语句的程序，在总体执行上也是按顺序结构执行
+
+1.文件包含命令
+
+C++语言提供了数百个库函数供用户调用以方便程序设计
+这些库函数均保存在include目录下扩展名为.h的头文件中
+用户在程序中要调用头文件中的库函数，必须使用#include命令
+
+#include命令称为文件包含命令，又称为文件预处理语句
+如果使用的是系统提供的调用标准库函数，就用尖括号<>把头文件括起来 如
+#include <iostream>
+
+如果使用的头文件是用户自己编写的，则可以将头文件与源程序保存在同一目录下，在文件包含命令中用双引号把头文件括起来
+如当前目录下有用户自己编写的头文件mysum.h，则文件包含命令可写为
+#include "mysum.h"
+
+2.赋值语句
+
+赋值语句是给变量提供数据的最简单形式，它是程序中使用最多的语句之一，几乎所有的程序都要用到它
+一般格式为：
+变量=表达式；
+赋值语句的功能是把赋值号"="右边表达式的值赋给左边的变量
+！它的意义与等号不同
+
+eg2-14 求一元二次方程2x^2+8x+6的根
+思路：根据求根公式对a b c赋值，再计算
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+void main()
+{
+	double a = 2, b = 8, c = 6;
+	double x1, x2;
+	x1 = ((-b + sqrt(b * b - 4 * a * c)) / (2 * a));
+	x2 = ((-b - sqrt(b * b - 4 * a * c)) / (2 * a));
+	cout << "x1=" << x1 << "\t x2=" << x2 << endl;
+}
+
+运行结果：x1=-1 x2=-3
+
+eg2-15 交换两个变量的值
+方法一
+设立一个中间变量temp先存储一个量 再进行交换
+#include <iostream>
+using namespace std;
+void main()
+{
+	int a = 3, b = 5, temp;
+	temp = a;
+	a = b;
+	b = temp;
+	cout << "a=" << a << "\tb=" << b << endl;
+}
+
+方法二
+用按位异或运算来进行操作
+#include <iostream>
+using namespace std;
+void main()
+{
+	int a = 3, b = 5;
+	a = a ^ b;
+	b = b ^ a;
+	a = a ^ b;
+	cout << "a=" << a << "\tb=" << b << endl;
+}
+
+进行异或运算时a和b的位置对结果没有影响
+宏观来看就是b=b^(a^b) a=(a^b)^a实现交换
+如果c = a ^ b
+那么a = c ^ b
+即  a = (a ^ b) ^ b
+用同一个数b对数a进行二次异或运算的结果仍是数a
+！！！：通过按位异或运算，可以实现两个值的交换，而不必使用临时变量。
+
+3.控制输入格式的输出语句
+
+C++语言再iostream类中定义了用于处理输出的运算符"<<"
+使用cout输出流可在屏幕上显示输出的字符和数字
+
+C++还提供了一些控制输出格式的操纵符，它们可以直接嵌入到输入/输入语句中来实现格式控制
+常用的I/O流类库的操纵符如下：
+dec                        //输出十进制数
+hex                        //输出十六进制数
+otc                        //输出八进制数
+endl                       //插入换行符
+ends                       //插入空字符
+setw(int n)                //设置输出域宽度为指定值n
+setprecision(int n)        //设置浮点数的小数位数为指定值n（包括小数点）
+在使用setw(int n)和setprecision(int n)操纵符时，要在程序的开头包含iomanip
+
+
+eg2-16 应用控制输出宽度的setw操纵符，编写一个用" * "组成的倒置三角形程序
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	cout << setw(7) << "*******" << endl;
+	cout << setw(6) << "*****" << endl;
+	cout << setw(5) << "***" << endl;
+	cout << setw(4) << "*" << endl;
+}
+
+我没看懂到底怎么将这个三角形对称好的
+书里面的解析就不像人话
+第一行setw（7）指定输出宽度为7 有7个*
+第二行setw（6）指定输出宽度为6 只有5个* 因此在*前面留有1个空格
+第三行setw（5）指定输出宽度为5 只有3个* 因此在*前面留有2个空格
+第四行setw（4）指定输出宽度为4 只有1个* 因此在*前面留有3个空格
+
+
+
+
+
 
 
 
