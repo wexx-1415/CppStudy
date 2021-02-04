@@ -570,27 +570,380 @@ if-else-if结构的功能：
 
 eg2-20 编写程序，根据月份判断季节
 
+多分支的if-else结构 没啥意思
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int month = 4;
+	if (month == 12 || month == 1 || month == 2)
+	{
+		cout << "4月是" << "冬天" << endl;
+	}
+	else if (month == 3 || month == 4 || month == 5)
+	{
+		cout << "4月是" << "春天" << endl;
+	}
+	else if (month == 6 || month == 7 || month == 8)
+	{
+		cout << "4月是" << "夏天" << endl;
+	}
+	else if (month == 9 || month == 10 || month == 11)
+	{
+		cout << "4月是" << "冬天" << endl;
+	}
+	else
+	{
+		cout << "不合法的月份" << endl;
+	}
+}
+
+2.4.4 switch语句
+
+switch语句是一个多分支选择语句 也叫开关语句
+它可以根据一个整型表达式有条件的选择一个语句执行
+if语句只有两个分支可选择，而实际问题中常常需要用到多分支的选择，可以用嵌套if语句来处理
+但如果分支较多，则嵌套的if语句层数太多，造成程序冗长且执行效率降低
+
+语法形式如下
+switch(变量名称或表达式)
+{
+case 判断常量1：{程序段1；break；}
+case 判断常量2：{程序段2；break；}
+…
+case 判断常量n：{程序段n；break；}
+[default:{程序段n+1；}]
+}
+
+switch语句首先计算条件表达式的值，如果表达式的值和某个case后面的判断常量相同，就执行该case里的若干条语句，直到break语句为止
+若没有一个判断常量相同，则执行default后面的若干条语句。可以没有default语句块
+在case语句块中，break是必不可少的 break表示终止switch 跳转到switch的后续语句继续运行程序
+
+eg2-21 把学生考试成绩分成ABCDE五个等级 大于90分为A 80-90分为B 70-80为C 60-70为D 60以下为E 现某同学成绩为82分 试确定其成绩等级
+
+写一串switch语句将分数/10再用判断常量即可
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int score = 82;
+	char grade;
+	switch (score / 10)
+	{
+	case 10:
+	case 9:grade = 'A'; break;
+	case 8:grade = 'B'; break;
+	case 7:grade = 'C'; break;
+	case 6:grade = 'D'; break;
+	default:grade = 'E';
+	}
+	cout << "成绩等级：" << grade << endl;
+}
+
+2.4.5 循环语句
+
+在程序设计过程中，经常需要将一些功能按一定的要求重复执行多次，将这一过程称为循环
+
+循环结构是程序设计中一种很重要的结构
+其特点是：
+在给定条件成立时，反复执行某程序段，直到条件不成立为止。
+给定的条件称为循环条件，反复执行的程序段称为循环体
+
+1.for循环语句
+
+语法结构：
+for(循环变量赋初值；循环条件；增量表达式)
+{
+循环体语句块；
+}
+
+在for语句中 其语法成分如下：
+Ⅰ循环变量赋初值是初始循环的表达式，它在循环开始的时候就被执行一次
+Ⅱ循环条件决定什么时候终止循环，这个表达式在每次循环的过程被计算一次。当表达式计算结果为false时循环结束
+Ⅲ增量表达式是每循环一次循环变量增加多少（即步长）的表达式
+Ⅳ循环体是被重复执行的程序段
+
+eg2-22 设计一个累加器 计算从1加到100的和
+
+高斯同学5050-，-
+设立一个中间量sum 用for语句从1开始加起
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int sum = 0;
+	int i;
+	for (i = 1; i <= 100; i++)
+	{
+		sum += i;
+	}
+	cout << "总和为" << sum << endl;
+}
+
+eg2-23 求10！
+
+和上面的累加一个思路 简单的累乘
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	long m = 1;
+	int i = 1;
+	for (i = 1; i <= 10; i++)
+		m = m * i;
+	cout << "10!=" << m << endl;
+}
+
+运行结果：3628800
+
+eg2-24 从键盘上输入10个整数，一边输入一边统计偶数的个数
+
+%2==0的比较 键入10个数字的话可以用数组 但是目前书里面还没用到数组的知识 先用比较简单的方法
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int i, x, s = 0;
+	for (i = 1; i <= 10; i++)
+	{
+		cin >> x;
+		if (x % 2 == 0)
+		{
+			cout << x << "是偶数" << endl;
+			s++;
+		}
+	}
+	cout << "共有" << s << "个偶数" << endl;           //这样隔开来打印发现printf其实挺香的
+}
+
+for语句条件中的3个表达式可忽略，但表达式之间的分号不能省略
+若for语句条件中的3个表达式都省略 则为无限循环
+for（；；）
+{
+…//无限循环
+}
+一般为了避免无限循环 上述的循环体中应包含能够退出的语句
+可以使用break语句强行退出循环 忽略循环体中的任何其他语句和循环的条件测试
+在循环中遇到break语句时 循环被终止 程序跳到循环后面的语句继续运行
+
+eg2-25 无限循环需安排退出循环语句
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int i = 1;
+	for (;;)
+	{
+		cout << i << endl;
+		i++;
+		if (i > 5)
+			break;
+	}
+}
 
 
+2.while循环语句
+
+C++提供了两种while循环语句：while语句和do-while语句
+
+1）while语句
+
+语法结构：
+while（循环语句表达式）
+{
+…循环体；
+}
+
+eg2-26 老汉卖西瓜，第一天卖西瓜总数的一半多一个，第二天卖剩下的一半多一个，后每天都是卖前一天剩下的一半多一个，到第十天只剩下一个，求西瓜总数多少？
+
+从后面的天数向前面的天数开始算起 设第十天的西瓜有x个，则第九天有2（x+1）个 第八天有2（2x+3）个 用while语句循环类推
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int x = 1, i = 1;
+	while (i <= 9)
+	{
+		x = (x + 1) * 2;
+		i++;
+	}
+	cout << "x=" << x << endl;
+}
+
+运行结果：x=1534
+
+2）do-while语句
+
+语法结构
+do
+{
+…循环体；
+}while（循环体表达式）；
+
+do-while语句与while语句的区别在于
+先执行循环中的语句再计算条件表达式，所以do-while语句的循环体至少被执行一次
+
+eg2-27 计算1!+2!+3!+...+10!
+
+比上文计算阶乘的例子多引入一个sum表示求和 再用while循环即可
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	long sum = 0, i = 1, p = 1;
+	do
+	{
+		p = p * i;
+		sum = sum + p;
+		i++;
+	} while (i <= 10);
+	cout << "1!+2!+3!+…+10!=" << sum << endl;
+}
+
+运行结果：4037913
+
+3.循环嵌套
+
+循环可以嵌套，在一个循环体内包含另一个完整的循环叫做循环嵌套
+循环嵌套运行时，外循环每执行一个，内层循环要执行一个周期
+
+eg2-28 应用循环嵌套 编写一个按9行9列排列输出的九九乘法表程序
+
+用i来表示行数 用j来表示列数
+双重循环的话 定义外循环变量i 内循环变量j
+外循环变量i每执行1次 内循环变量j执行i次
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	int i, j;
+	for (i = 1; i <= 9; i++)
+	{
+		for (j = 1; j <= i; j++)
+		{
+			cout << i << "×" << j << "=" << i * j << "\t";
+		}
+		cout << endl;
+	}
+}
+
+循环可以嵌套 但不能交叉
+
+eg2-39 应用循环嵌套 编写求出100以内所有素数的程序
+
+算法：
+要判断n是素数 ，将它和1、2、3、4...n-1依次相除 都不能整除时n才为素数
+
+优化：上面的除法次数太多，效率很低。不需要一直除到n-1，只需要除到n的算术平方根即可
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+void main()
+{
+	int n, k;
+	for (n = 2; n < 100; n++)
+	{
+		int m = sqrt((double)n);
+		for (k = 2; k <= m; k++)
+		{
+			if (n % k == 0)break;
+		}
+		if (k > m)
+		{
+			cout << setw(5) << n;
+		}
+	}
+	cout << endl;
+}
+
+eg2-30 绘制指数函数y=e^x的图像
+
+没看懂..
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+void main()
+{
+	double t;
+	float r;
+	int i, R;
+	for (t = 0; t <= 3000; t += 150)
+	{
+		r = (float)exp(-0.001 * t);
+		R = (int)(70 * r);
+		for (i = 1; i <= R; ++i)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+运行结果：
+**********************************************************************
+************************************************************
+***************************************************
+********************************************
+**************************************
+*********************************
+****************************
+************************
+*********************
+******************
+***************
+*************
+***********
+*********
+********
+*******
+******
+*****
+****
+****
+***
+
+2.4.6 转向语句
+
+C++主要有break和continue两种转向语句
+
+break语句有两种作用
+Ⅰbreak语句被用来跳出switch结构，继续执行后续语句
+Ⅱbreak语句能被用来终止循环
+
+在循环体中使用break强行跳出循环时 忽略循环体中的任何其他语句和循环的条件测试 终止整个循环 程序跳到循环后面的语句继续运行
+
+continue只是中止本次循环 跳转到循环的判断语句 继续下一次循环
+
+eg2-31 计算y=sqrt（x）+x
+
+简单的数学计算..
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+void main()
+{
+	int x, y;
+	while (true)
+	{
+		cin >> x;
+		if (x < 0)continue;
+		y = sqrt(x) + x;
+		cout << "y=" << y << endl;
+		break;
+	}
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+将近1000行..这一小节终于结束了我的天
