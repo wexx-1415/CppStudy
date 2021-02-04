@@ -1,1 +1,114 @@
+eg2-32 设一小球从200m高空落下，每次落地后反弹回原来高度的一半，再落下
+编写程序，求它在第十次反弹的高度是多少米？在第十次落地时共经过了多少米？
 
+#include <iostream>
+using namespace std;
+void main()
+{
+	float s = 200.0, h = s / 2;
+	int i;
+	for (i = 2; i <= 10; i++)
+	{
+		s = s + 2 * h;
+		h = h / 2;
+	}
+	cout << "反弹的高度是：" << h << endl;
+	cout << "经过了" << s << "米" << endl;
+}
+
+eg2-33 应用循环在屏幕上输出符号“*”组成的三角图形
+
+#include <iostream>
+using namespace std;
+void main()
+{
+	for (int i = 1; i <= 6; i++)
+	{
+		for (int j = 1; j <= 6 - i; j++)
+			cout << " ";
+		for (int k = 1; k <= 2 * i - 1; k++)
+			cout << "*";
+		cout << endl;
+	}
+}
+
+eg2-34 用矩形法求定积分的近似值
+
+高数..不想动脑子..这题跳了吧
+
+
+eg2-35 应用循环语句和switch选择开关语句，设计一个学生成绩管理系统的菜单选择程序
+
+算法设计：
+1.显示菜单
+使用cout语句将菜单项一项一项在屏幕上显示，界面的边框可以通过多个“-”和“*”拼接起来
+
+2.菜单项的选择
+菜单应根据用户的选择做出不同的反应，因此需要使用分支结构实现选择选项的功能。
+根据题意，主菜单含有3个菜单项，属于多分支条件判断，使用带break的switch语句最合适
+
+3.重复显示主菜单
+为了能够使程序具有重复选择菜单选项的功能，因此需要使用while循环结构
+
+这里要用到的知识已经到数组和字符串了就离谱
+
+#include <iostream>
+#include <string>
+using namespace std;
+void main()
+{
+	int select;
+	select = 1;
+	char xuehao[5];
+	char name[10];
+	int chengji;
+
+	cout << endl << endl;
+	cout << "-------------------------------------------------------" << endl;
+	cout << "*                                                      *" << endl;
+	cout << "*              欢迎进入学生成绩管理系统                *" << endl;
+	cout << "*                                                      *" << endl;
+	cout << "-------------------------------------------------------" << endl;
+	while (select)
+	{
+		cout << endl << endl;
+		cout << "    请选择您的操作：" << endl << endl;
+		cout << "                          1.录入学生成绩信息；" << endl;
+		cout << "                          2.显示学生成绩信息；" << endl;
+		cout << "                          0.退出；            " << endl;
+		cout << "    请选择按键（0-2）：" << endl;
+		cin >> select;
+		cout << endl;
+		if (select >= 0 && select <= 2)
+		{
+			switch (select)
+			{
+			case 1:
+				cout << "请输入学号：";
+				cin >> xuehao;
+				cout << endl;
+				cout << "请输入学生姓名：";
+				cin >> name;
+				cout << endl;
+				cout << "请输入成绩：";
+				cin >> chengji;
+				cout << endl;
+				break;
+			case 2:
+				cout << "所有学生成绩信息如下：" << endl;
+				cout << "您选择了显示所有学生成绩信息" << endl;
+				break;
+			case 0:
+				exit(0);
+				break;
+			}
+		}
+		else
+		{
+			cout << "输入错误，请重新输入！" << endl;
+			break;
+		}
+	}
+}
+
+这里有很多的知识点都是后面才学到的 暂时保留
