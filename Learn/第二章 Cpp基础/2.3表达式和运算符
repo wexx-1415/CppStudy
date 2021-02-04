@@ -454,24 +454,121 @@ void main()
 在cout后面先预留n个空位 之后再从后开始填补要输出的量
 
 
+2.4.3 选择控制语句
 
+1.单分支选择结构
 
+if语句用于实现选择结构。它判断给定的条件是否满足，并根据判断结果决定执行某个分支的程序段
+对于单分支选择的if条件语句 其语法格式为
+if(条件表达式)
+{
+若干语句；
+}
+翻译成人话是
+当条件表达式所给定的条件成立时（true） 就执行其中的语句块 若条件不成立（false） 则跳过这部分语句 直接执行后续语句
 
+eg2-17 任意输入两个整数 按从小到大的顺序依次输出这两个数
 
+用if语句的条件比较一下a和b的大小即可 要交换的话就引入中间量temp（或者像上面一样的异或运算）
 
+#include <iostream>
+using namespace std;
+void main()
+{
+	int a, b, temp;
+	cout << "任意输入两个整数：\na=";
+	cin >> a;
+	cout << "b=";
+	cin >> b;
+	if (a > b)
+	{
+		temp = a;
+		a = b;
+		b = temp;
+	}
+	cout << "a=" << a << "\tb=" << b << endl;
+}
 
+eg2-18 对给定的3个数 求最大数的平方
 
+引入一个量max 先将a的值赋给max 然后再将max按顺序和b、c比较 如果max<b或c则将b或c对max赋值 最后计算的平方用max*max得出结果
 
+#include <iostream>
+using namespace std;
+void main()
+{
+	int a = 5, b = 9, c = 7, max;
+	max = a;
+	if (b > max)
+	{
+		max = b;
+	}
+	if (c > max)
+	{
+		max = c;
+	}
+	cout << "最大数的平方为：" << max * max << endl;
+}
 
+2.双分支选择结构
 
+有时需要在条件表达式不成立的时候执行不同的语句，可以使用另一种双分支选择结构的条件语句，即if-else语句
+双分支选择结构的语法格式为
+if(表达式)
+{
+语句块1；
+}
+else
+{
+语句块2；
+}
 
+翻译成人话：
+当条件成立时（true），执行语句块1，否则（else）执行语句块2
 
+eg2-19 计算y=sqrt（x^2-25) x<=-5或x>=5 y=sqrt(25-x^2) -5<x<5
 
+常规的数学运算 注意一下头文件要引入的sqrt函数即可（我没看懂为什么这里教材要强行使用逻辑运算符 太刻意了吧）
 
+#include <iostream>
+#include <cmath>
+using namespace std;
+void main()
+{
+	double x, y;
+	cin >> x;
+	if (-5 < x < 5)
+	{
+		y = sqrt(25 - x * x);
+	}
+	else
+	{
+		y = sqrt(x * x - 25);
+	}
+	cout << "y=" << y << endl;
+}
 
+3.多分支的if-else-if结构
 
+当需要判断多个条件时，可以使用多分支的if-else-if结构
+if-else-if是if-else语句的扩充形式
+一个if语句可以有任意个if-else-if部分，但只能有一个else部分
+一般格式为:
+if(条件表达式1)
+{程序段1；}
+else if(条件表达式2)
+{程序段2；}
+…
+else if(条件表达式n)
+{程序段n；}
+else
+{程序段n+1；}
 
+if-else-if结构的功能：
+依次判断各分支中括号内的条件表达式是否成立，一旦成立，则执行该分支的程序段
+如果所有的表达式均不成立，则执行else的程序段
 
+eg2-20 编写程序，根据月份判断季节
 
 
 
