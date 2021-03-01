@@ -191,3 +191,72 @@ void ComCircle(double& area, double& circum, double r)
 3.2.5 函数的嵌套调用
 
 C++语言中不允许函数的嵌套定义，但允许被调用的函数又调用另一个函数。这种调用就称为嵌套调用
+
+eg3-10
+
+#include<iostream>
+using namespace std;
+long f(int i)
+{
+	int j;
+	long fac = 1;
+	for (j = 1; j <= i; j++)
+		fac = fac * j;
+	return(fac);
+}
+long add(int n)
+{
+	int i;
+	long s = 0;
+	for (i = 1; i <= n; i++)
+		s = s + f(i);
+		return(s);
+}
+void main()
+{
+	int n;
+	long sum;
+	cout << "请输入正整数n：" << endl;
+	cin >> n;
+	sum = add(n);
+	cout << "1!+2!+3!+…+n!=" << sum << endl;
+}
+
+3.2.6 函数的递归调用
+
+C++允许函数的嵌套调用
+如果被调函数又调用该函数自身，这样的嵌套函数称为函数的递归调用
+
+递归函数不能一直调用自己，否则程序无法结束，因此递归函数必须要有一个终结条件让函数结束
+
+eg3-11 用递归的方法求斐波那契数列的第n项
+
+#include<iostream>
+using namespace std;
+long int f(int n)
+{
+	long int x = 0;
+	if (n == 1 || n == 2)
+		x = 1;
+	else
+		x = f(n - 1) + f(n - 2);
+	return x;
+}
+void main()
+{
+	int n = 0;
+	long int x = 0;
+	cout << "请输入正整数n：" << endl;
+	cin >> n;
+	x = f(n);
+	cout << "n=" << n << ",f(n)=" << x << endl;
+}
+
+实现递归调用的条件与步骤如下
+Ⅰ要有一个确定能避免无限递归调用的终止条件测试
+Ⅱ有一个递归调用语句，且递归参数越来越向终止条件接近
+Ⅲ要先进行终止条件测试后递归调用
+
+书里面把函数写在主函数后面在我的visualstdio中不能运行.
+只能把函数在一开始声明才能运行程序
+上课的时候去问问老师
