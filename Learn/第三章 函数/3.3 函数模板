@@ -19,3 +19,74 @@ return a+b;}
 T(T a,T b)
 {
 return a+b;}
+
+讲这个函数成为一个函数模板
+该函数可以用来求一定类型范围类的某种类型的两个数之和
+
+函数模板实际上是一个通用函数
+使用函数模板可以避免重载函数的重复设计，提高代码的可重用性
+
+函数模板的定义格式如下：
+template<class 类型化参数1,class 类型化参数2>
+返回类型 函数名（参数表)
+{
+//函数体
+}
+其中，template是定义函数模板的关键字，后面的参数表<class 类型化参数1, class 类型化参数2>称为函数模板表，它们用逗号分隔
+
+例如，定义函数模板：
+Template <class T>
+void swap(T a, T b)
+{
+T temp;
+temp=a;a=b;b=temp;
+}
+此时，该函数模板中只有一个类型化参数T，表示该函数模板只有一个模板参数T
+此函数模板的功能是可以实现同一类型的两数的交换
+
+函数模板内可以使用不只一种暂定的数据类型
+例如：
+template<class T1,class T2,class T3>
+T1 fnc(T1 a, T2 b, T3 c)
+{
+…;//函数体具体内容
+}
+该示例使用了3种不同的数据类型
+
+
+3.3.2 模板函数
+
+函数模板是对于一组函数的描述，而模板函数是某个函数模板的一个具体实例
+编译系统对于程序中所定义的函数模板并不产生可执行代码。
+当编译系统在程序中发现有与函数模板的形参表中相匹配的函数调用时，便生成一个模板函数，该函数的函数体与函数模板的函数体相同
+
+例如，用int代替上例函数模板中的T，就会生成如下模板函数
+void swap(int a,int b)
+{
+int temp;
+temp=a;a=b;b=temp;}
+
+eg3-12 程序举例
+
+#include<iostream>
+using namespace std;
+template<class T1, class T2>
+T1 add(T1 a, T2 b)
+{
+	return a + b;
+}
+void main()
+{
+	int x = 5;
+	float y = -3.1f;
+	double z = 8.5;
+	char ch = 'a';
+	cout << "add(x,x)=" << add(x, x) << endl;
+	cout << "add(y,x)=" << add(y, x) << endl;
+	cout << "add(z,x)=" << add(z, x) << endl;
+	cout << "add(y,y)=" << add(y, y) << endl;
+	cout << "add(ch,x)=" << add(ch, x) << endl;
+}
+
+程序说明：
+该函数模板具有两个模板参数T1，T2，这就意味着在模板函数中可以出现两个相同的或不同的类型变量
