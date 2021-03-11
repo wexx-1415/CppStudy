@@ -1,4 +1,5 @@
 //visual studio中使用strcpy和strcat函数时会显示To disable deprecation , use _CRT_SECURE_NO_WARNINGS，解决方案在代码末
+//问题出现的原因：微软认为strcpy函数的安全性比较差，容易出现内存泄露，所以强制要求使用strcpy_s函数代替strcpy函数
 #include<iostream>
 using namespace std;
 void main()
