@@ -32,6 +32,7 @@ void main()
 		a[i] = rand() % N + 1;
 		cout << a[i] << "\t";
 	}
+	cout << endl;
 	Selection(a, 10);
 	cout << "排序后：" << endl;
 	for (i = 0; i < 10; i++)
