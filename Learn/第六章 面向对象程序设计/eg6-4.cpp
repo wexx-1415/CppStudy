@@ -1,29 +1,19 @@
 #include<iostream>
 using namespace std;
-class Sum {
+#define PI 3.14
+class Circle {
 private:
-	int num;
+	double radius;
 public:
-	Sum();
-	Sum(int a, int b);
-	void print();
+	Circle();
 };
-Sum::Sum() {
-	num = 15;
-	cout << "调用默认的构造函数，num=" << num << endl;
-}
-Sum::Sum(int a, int b) {
-	num = a + b;
-	cout << "调用带参数构造函数计算a+b=" << num << endl;
-}
-void Sum::print() {
-	cout << "调用一般成员函数" << endl;
+Circle::Circle() {
+	radius = 8;
+	cout << "构造函数被自动调用" << endl;
+	cout << "圆的半径r=8" << endl;
+	double s = PI * radius * radius;
+	cout << "圆的面积：" << s << endl;
 }
 int main() {
-	Sum s;
-	Sum();
-	Sum(3, 5);
-	s.print();
-
-	return 0;
+	Circle cir;
 }
