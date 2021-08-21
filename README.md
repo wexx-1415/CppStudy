@@ -12,7 +12,7 @@
 5. Effective C++&More Effective C++&深度探索C++对象模型
 
 ## Catalog
-### 学校课程的C++实验报告
+### 学校课程的实验报告
 * [控制结构和函数](https://github.com/APTX-4396/Blog/blob/main/2021/6.17-6.20.md)
 * [面向对象初步](https://github.com/APTX-4396/Blog/blob/main/2021/6.6%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%9D%E6%AD%A5.md)
 * [对象作为数据成员](https://github.com/APTX-4396/Blog/blob/main/2021/6.23.md)
