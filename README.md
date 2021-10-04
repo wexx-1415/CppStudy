@@ -3,6 +3,8 @@
 学C++没啥理由，就是因为学校开的课程顺序是C->C++，没有别的语言了qwq  
 ## 辅助工具
 1. 侯捷老师的系列C++网课（话说他还会唱歌和评历史，C++上岸真快乐啊
+2. 好康的[网站1](https://cplusplus.com/)
+3. 好康的[网站2](https://gcc.gnu.org/)
 
 学这东西要读的书可太多了...
 书：
@@ -35,6 +37,9 @@
 * [多态 抽象类](https://github.com/APTX-4396/Blog/blob/main/2021/6.6%E5%A4%9A%E6%80%81%EF%BC%9A%E6%8A%BD%E8%B1%A1%E7%B1%BB.md)
 * [多态 函数模板](https://github.com/APTX-4396/Blog/blob/main/2021/6.6%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF.md)
 * [文件操作和异常处理机制](https://github.com/APTX-4396/Blog/blob/main/2021/6.15.md)
+
+### STL标准库与泛型编程
+* [头文件和版本，开个头不是啥重要的概念](https://github.com/APTX-4396/CppStudy/blob/main/2021/10.4.md#headers-%E7%89%88%E6%9C%AC%E5%92%8C%E9%87%8D%E8%A6%81%E8%B5%84%E6%BA%90)
 ### 计算机系统
 * 计算机系统基础
     * [计算机系统概述]()
