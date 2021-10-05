@@ -42,7 +42,7 @@
 * [头文件和版本，开个头不是啥重要的概念](https://github.com/APTX-4396/CppStudy/blob/main/2021/10.4.md#headers-%E7%89%88%E6%9C%AC%E5%92%8C%E9%87%8D%E8%A6%81%E8%B5%84%E6%BA%90)
 ### 计算机系统
 * 计算机系统基础
-    * [计算机系统概述]()
+    * [计算机系统概述](https://github.com/APTX-4396/CppStudy/blob/main/2021/10.5.md#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0)
     * [数据的机器级表示和处理]()
     * [程序的转换和机器级表示]()
 * 深入理解计算机系统
