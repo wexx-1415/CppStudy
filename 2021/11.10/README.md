@@ -67,6 +67,33 @@ $ gcc -g -Wall hello.c -o hello
 ![image](https://user-images.githubusercontent.com/77609544/141073177-5a6e4896-8ddb-4cac-b86e-03d2d252bf00.png)  
 再在命令行直接执行：  
 ![image](https://user-images.githubusercontent.com/77609544/141073254-f8472f10-6574-40d4-a3bd-3a41c4f10496.png)  
+将hello.c文件换成各种各样后缀的文件..  
+现在我又看不懂Linux命令..  
+![image](https://user-images.githubusercontent.com/77609544/141099127-9770cbac-b8eb-4f94-ac62-dc815100918c.png)  
+![image](https://user-images.githubusercontent.com/77609544/141099321-eb23df1d-3239-4cee-9493-af8033b390a8.png)  
+附上看一个[B站up](https://www.bilibili.com/video/BV1cD4y1D7uR)用manim做的图  
+![image](https://user-images.githubusercontent.com/77609544/141099622-4fa59f86-d244-4a68-9ed9-000f959a16e5.png)  
+这样应该会好理解一点  
+接下来就是对两个不同文件进行反汇编，打开看看有什么不同  
+![image](https://user-images.githubusercontent.com/77609544/141100122-1c4c30da-e7de-492b-a153-a50c9e57dbcc.png)  
+![image](https://user-images.githubusercontent.com/77609544/141100184-2740f43c-561d-4297-aec8-15b754782d52.png)  
+![image](https://user-images.githubusercontent.com/77609544/141100226-16914e33-382f-4f30-b10f-b38a88511cef.png)  
+![image](https://user-images.githubusercontent.com/77609544/141100940-fea67afe-997e-44a0-b3a1-ed0a0b5be584.png)  
+![image](https://user-images.githubusercontent.com/77609544/141100965-eae57734-3ff4-4297-bfb4-b1a14ee727ac.png)  
+### 3.GDB调试
+我恨汇编  
+![image](https://user-images.githubusercontent.com/77609544/141101909-22836803-839c-4adb-b07e-944b48a755ed.png)  
+![image](https://user-images.githubusercontent.com/77609544/141102037-29f21d4b-7d20-4702-af9c-8b784c76999b.png)  
+![image](https://user-images.githubusercontent.com/77609544/141102155-6bc69915-c349-4c44-ba69-a66dc5c68cf5.png)  
+
+
+
+
+
+
+
+
+
 
 
 
